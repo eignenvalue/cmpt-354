@@ -1,0 +1,20 @@
+Entities:
+
+Researcher: Attributes include researcher ID (primary key), first name, last name, email address, and organization.
+Grant Competition: Attributes include competition ID (primary key), title, application deadline, short description, area, and status.
+Grant Proposal: Attributes include proposal ID (primary key), requested amount, application status, principle investigator, and collaborators.
+Reviewer: Attributes include reviewer ID (primary key), first name, last name, email address, and conflicts of interest.
+Reviewer Assignment: Attributes include assignment ID (primary key), grant competition ID (foreign key), reviewer ID (foreign key), deadline, and review status.
+Grant Selection Committee Meeting: Attributes include meeting ID (primary key), date, and list of participating reviewers.
+Relationships:
+
+Researchers submit Grant Proposals: One-to-many relationship between Researcher and Grant Proposal.
+Grant Proposals belong to Grant Competitions: One-to-many relationship between Grant Competition and Grant Proposal.
+Grant Proposals are reviewed by Reviewers: Many-to-many relationship between Reviewer and Grant Proposal (through Reviewer Assignment).
+Reviewers participate in Grant Selection Committee Meetings: Many-to-many relationship between Reviewer and Grant Selection Committee Meeting.
+Assumptions:
+
+Each researcher can be associated with multiple grant proposals, either as a principle investigator or as a collaborator.
+Each grant proposal can have multiple reviewers assigned to it.
+Each reviewer can participate in multiple grant selection committee meetings.
+Conflicts of interest are stored as a list of researcher IDs within the Reviewer entity.
