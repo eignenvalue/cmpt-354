@@ -3,28 +3,33 @@ from consolemenu import *
 from consolemenu.items import *
 import subprocess
 
+##functions do not work currently except for exit 
 def find_open_competitions(month):
-    print(month)
+    pu = PromptUtils(Screen())
+    # PromptUtils.input() returns an InputResult
+    result = pu.input("Enter an input")
+    
+    print(result)
 
 
 def find_largest_amount(area):
-    return None
+    print(area)
 
 
 def find_awarded_before_date(date):
-    return None
+    print(date)
 
 
 def calculate_discrepancy(area):
-    return None
+    print(area)
 
 
 def list_reviewers_not_in_conflict(proposal_id):
-    return None
+    print(proposal_id)
 
 
 def find_proposals_for_reviewer(reviewer_name):
-    return None
+    print(reviewer_name)
 
 
 def install(package):    
