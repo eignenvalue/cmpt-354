@@ -3,8 +3,17 @@ from consolemenu import *
 from consolemenu.items import *
 import subprocess
 
-def find_open_competitions(month):
-    print(month)
+
+##functions do not work currently except for exit 
+def find_open_competitions():
+    pu = PromptUtils(Screen())
+    # PromptUtils.input() returns an InputResult
+    result = pu.input("Enter an input")
+    
+    pu.println("\nYou entered:", result.input_string, "\n")
+    pu.enter_to_continue()
+    
+    
 
 
 def find_largest_amount(area):
