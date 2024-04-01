@@ -3,6 +3,10 @@ from consolemenu import *
 from consolemenu.items import *
 import subprocess
 
+##current functions not working except for exit 
+
+##current functions not working except for exit 
+
 
 ##functions do not work currently except for exit 
 def find_open_competitions(month):
