@@ -1,0 +1,11 @@
+Researcher={ researcherID (primary key), firstName, lastName, emailAddress, organization}
+  
+Grant Competition={competitionID (primary key), title, applicationDeadline, shortDescription, area, status}
+  
+Grant Proposal={ proposalID (primary key), requestedAmount, applicationStatus, principleInvestigator (foreign key referencing Researcher), collaborators}
+  
+Reviewer={ reviewerID (primary key), firstName, lastName, emailAddress, conflictsOfInterest (list of researcherIDs)}
+  
+Reviewer Assignment ={assignmentID (primary key), competitionID (foreign key referencing Grant Competition), reviewerID (foreign key referencing Reviewer), deadline, reviewStatus}
+  
+Grant Selection Committee Meeting = {meetingID (primary key), date}
