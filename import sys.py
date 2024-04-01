@@ -6,7 +6,7 @@ import subprocess
 ##current functions not working except for exit 
 
 def find_open_competitions(month):
-    return None
+    print(month)
 
 
 def find_largest_amount(area):
