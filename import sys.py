@@ -11,7 +11,10 @@ def find_open_competitions():
     # PromptUtils.input() returns an InputResult
     result = pu.input("Enter an input")
     
-    print(result)
+    pu.println("\nYou entered:", result.input_string, "\n")
+    pu.enter_to_continue()
+    
+    
 
 
 def find_largest_amount(area):
