@@ -5,7 +5,7 @@ import subprocess
 
 
 ##functions do not work currently except for exit 
-def find_open_competitions(month):
+def find_open_competitions():
     pu = PromptUtils(Screen())
     # PromptUtils.input() returns an InputResult
     result = pu.input("Enter an input")
