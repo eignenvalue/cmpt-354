@@ -4,7 +4,7 @@ from consolemenu.items import *
 import subprocess
 
 def find_open_competitions(month):
-    return None
+    print(month)
 
 
 def find_largest_amount(area):
