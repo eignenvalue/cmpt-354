@@ -3,8 +3,6 @@ from consolemenu import *
 from consolemenu.items import *
 import subprocess
 
-
-##functions do not work currently except for exit 
 def find_open_competitions(month):
     pu = PromptUtils(Screen())
     # PromptUtils.input() returns an InputResult
