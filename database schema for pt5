@@ -1,11 +1,17 @@
-Researcher={ researcherID (primary key), firstName, lastName, emailAddress, organization}
-  
-Grant Competition={competitionID (primary key), title, applicationDeadline, shortDescription, area, status}
-  
-Grant Proposal={ proposalID (primary key), requestedAmount, applicationStatus, principleInvestigator (foreign key referencing Researcher), collaborators}
-  
-Reviewer={ reviewerID (primary key), firstName, lastName, emailAddress, conflictsOfInterest (list of researcherIDs)}
-  
-Reviewer Assignment ={assignmentID (primary key), competitionID (foreign key referencing Grant Competition), reviewerID (foreign key referencing Reviewer), deadline, reviewStatus}
-  
-Grant Selection Committee Meeting = {meetingID (primary key), date}
+Researcher={researcherID, firstName, lastName, emailAddress, organization}
+
+GrantCompetition={competitionID, title, applicationDeadline, shortDescription, area, status (foreign key from GrantCompetition)}
+
+GrantProposal={proposalID, requestedAmount, applicationStatus, principleInvestigator (foreign key from Researcher)}
+
+Collaborators={(proposalID, researcherID) (foreign key from GrantProposal, foreign key from Researcher)}
+
+Reviewer={reviewerID, firstName, lastName, emailAddress}
+
+ConflictsOfInterest={(reviewerID, conflictedResearcherID) (foreign key from Reviewer, foreign key from Researcher)}
+
+ReviewerAssignment={assignmentID, competitionID (foreign key from GrantCompetition), reviewerID (foreign key from Reviewer), deadline, reviewStatus}
+
+GrantSelectionCommitteeMeeting={meetingID, date}
+
+MeetingDiscussions={(meetingID, proposalID) (foreign key from GrantSelectionCommitteeMeeting, foreign key from GrantProposal)}
