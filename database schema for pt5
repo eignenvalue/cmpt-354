@@ -1,6 +1,6 @@
 Researcher={researcherID, firstName, lastName, emailAddress, organization}
 
-GrantCompetition={competitionID, title, applicationDeadline, shortDescription, area, status (foreign key from GrantCompetition)}
+GrantCompetition={competitionID, title, applicationDeadline, shortDescription, area, status}
 
 GrantProposal={proposalID, requestedAmount, applicationStatus, principleInvestigator (foreign key from Researcher)}
 
