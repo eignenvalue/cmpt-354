@@ -15,3 +15,5 @@ ReviewerAssignment={assignmentID, competitionID (foreign key from GrantCompetiti
 GrantSelectionCommitteeMeeting={meetingID, date}
 
 MeetingDiscussions={(meetingID, proposalID) (foreign key from GrantSelectionCommitteeMeeting, foreign key from GrantProposal)}
+
+## problems with current tables work on schemas tomorrow 
