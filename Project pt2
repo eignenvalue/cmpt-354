@@ -16,6 +16,26 @@ CommitteeMeetings: Attributes include meeting_id (primary key) and meeting_date.
 
 MeetingDiscussions: This is implicit in the schema, with the combination of meeting_id and proposal_id.
 
+schemas are outlined below as:
+
+Researcher={_researcherID_, firstName, lastName, emailAddress, organization}
+
+GrantCompetition={_competitionID_, title, applicationDeadline, Description, area, status}
+
+GrantProposals={_proposal_id_,requested_amount,competition_id(fkGrantCompetitions),principal_investigator_id(fkResearchers),status,awarded_amount,submission_date}
+
+Collaborators={proposal_id(fkGrantproposals),researcher_id(fkResearchers),PRIMARY KEY (proposal_id, researcher_id),}
+
+Reviewers={_reviewer_id_,researcher_id(fkResearchers)}
+
+ReviewerAssignments={_assignment_id_,proposal_id(fkGrantProposals),reviewer_id(fkReviewers),review_deadline,review_submitted}
+
+ConflictsOfInterest={_conflict_id_, reviewer_id(fkReviewers), researcher_id(fkResearchers)}
+
+CommitteeMeetings={_meeting_id_, meeting_date}
+
+MeetingDiscussions={meeting_id(fkCommitteeMeetings), proposal_id(fkGrantProposals), PRIMARY KEY (meeting_id, proposal_id)}
+
 Relationships:
 
 We manage the many to many relationship between collaborators using the collaborators table
