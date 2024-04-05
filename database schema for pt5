@@ -1,3 +1,5 @@
+schema outline:
+
 Researcher={_researcherID_, firstName, lastName, emailAddress, organization}
 
 GrantCompetition={_competitionID_, title, applicationDeadline, Description, area, status}
@@ -15,3 +17,76 @@ ConflictsOfInterest={_conflict_id_, reviewer_id(fkReviewers), researcher_id(fkRe
 CommitteeMeetings={_meeting_id_, meeting_date}
 
 MeetingDiscussions={meeting_id(fkCommitteeMeetings), proposal_id(fkGrantProposals), PRIMARY KEY (meeting_id, proposal_id)}
+
+Sqlite create table querys:
+
+CREATE TABLE Researcher (
+    researcherID INTEGER PRIMARY KEY,
+    firstName TEXT NOT NULL,
+    lastName TEXT NOT NULL,
+    emailAddress TEXT UNIQUE NOT NULL,
+    organization TEXT NOT NULL
+);
+
+CREATE TABLE GrantCompetition (
+    competitionID INTEGER PRIMARY KEY,
+    title TEXT NOT NULL,
+    applicationDeadline DATE NOT NULL,
+    shortDescription TEXT,
+    area TEXT,
+    status TEXT CHECK (status IN ('open', 'closed'))
+);
+
+CREATE TABLE GrantProposal (
+    proposalID INTEGER PRIMARY KEY,
+    requestedAmount REAL NOT NULL,
+    applicationStatus TEXT NOT NULL,
+    principleInvestigator INTEGER,
+    FOREIGN KEY (principleInvestigator) REFERENCES Researcher(researcherID)
+);
+
+CREATE TABLE Collaborators (
+    proposalID INTEGER,
+    researcherID INTEGER,
+    PRIMARY KEY (proposalID, researcherID),
+    FOREIGN KEY (proposalID) REFERENCES GrantProposal(proposalID),
+    FOREIGN KEY (researcherID) REFERENCES Researcher(researcherID)
+);
+
+CREATE TABLE Reviewer (
+    reviewerID INTEGER PRIMARY KEY,
+    firstName TEXT NOT NULL,
+    lastName TEXT NOT NULL,
+    emailAddress TEXT UNIQUE NOT NULL
+);
+
+CREATE TABLE ConflictsOfInterest (
+    reviewerID INTEGER,
+    conflictedResearcherID INTEGER,
+    PRIMARY KEY (reviewerID, conflictedResearcherID),
+    FOREIGN KEY (reviewerID) REFERENCES Reviewer(reviewerID),
+    FOREIGN KEY (conflictedResearcherID) REFERENCES Researcher(researcherID)
+);
+
+CREATE TABLE ReviewerAssignment (
+    assignmentID INTEGER PRIMARY KEY,
+    competitionID INTEGER,
+    reviewerID INTEGER,
+    deadline DATE,
+    reviewStatus TEXT,
+    FOREIGN KEY (competitionID) REFERENCES GrantCompetition(competitionID),
+    FOREIGN KEY (reviewerID) REFERENCES Reviewer(reviewerID)
+);
+
+CREATE TABLE GrantSelectionCommitteeMeeting (
+    meetingID INTEGER PRIMARY KEY,
+    date DATE NOT NULL
+);
+
+CREATE TABLE MeetingDiscussions (
+    meetingID INTEGER,
+    proposalID INTEGER,
+    PRIMARY KEY (meetingID, proposalID),
+    FOREIGN KEY (meetingID) REFERENCES GrantSelectionCommitteeMeeting(meetingID),
+    FOREIGN KEY (proposalID) REFERENCES GrantProposal(proposalID)
+);
