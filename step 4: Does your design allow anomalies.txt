@@ -7,7 +7,7 @@ GrantCompetitions Table:
 competition_id → {title, application_deadline, description, area, status}
 GrantProposals Table:
 
-proposal_id → {requested_amount, competition_id, principal_investigator_id, status, awarded_amount, submission_date}
+proposal_id → {requested_amount, competition_id, principal_investigator_id, status, awarded_amount, submission_date,competitionID}
 Collaborators Table:
 
 {proposal_id, researcher_id} → {proposal_id, researcher_id}
