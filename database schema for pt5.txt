@@ -42,6 +42,8 @@ CREATE TABLE GrantProposal (
     requestedAmount REAL NOT NULL,
     applicationStatus TEXT NOT NULL,
     principleInvestigator INTEGER,
+    competitionID INTEGER,
+    FOREIGN KEY (competitionID) REFERENCES GrantCompetition(competitionID)
     FOREIGN KEY (principleInvestigator) REFERENCES Researcher(researcherID)
 );
 
