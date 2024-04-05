@@ -1,0 +1,30 @@
+Researchers Table:
+
+researcher_id → {first_name, last_name, email_address, organization}
+
+GrantCompetitions Table:
+
+competition_id → {title, application_deadline, description, area, status}
+GrantProposals Table:
+
+proposal_id → {requested_amount, competition_id, principal_investigator_id, status, awarded_amount, submission_date}
+Collaborators Table:
+
+{proposal_id, researcher_id} → {proposal_id, researcher_id}
+Reviewers Table:
+
+reviewer_id → {researcher_id}
+ReviewerAssignments Table:
+
+assignment_id → {proposal_id, reviewer_id, review_deadline, review_submitted}
+ConflictsOfInterest Table:
+
+conflict_id → {reviewer_id, researcher_id}
+CommitteeMeetings Table:
+
+meeting_id → {meeting_date}
+MeetingDiscussions Table:
+
+{meeting_id, proposal_id} → {meeting_id, proposal_id}
+
+For each of these relations the primary key is a candidate key so the schema is bcnf and does not allow for anomalies
