@@ -1,19 +1,17 @@
-Researcher={researcherID, firstName, lastName, emailAddress, organization}
+Researcher={_researcherID_, firstName, lastName, emailAddress, organization}
 
-GrantCompetition={competitionID, title, applicationDeadline, shortDescription, area, status}
+GrantCompetition={_competitionID_, title, applicationDeadline, Description, area, status}
 
-GrantProposal={proposalID, requestedAmount, applicationStatus, principleInvestigator (foreign key from Researcher)}
+GrantProposals={_proposal_id_,requested_amount,competition_id(fkGrantCompetitions),principal_investigator_id(fkResearchers),status,awarded_amount,submission_date}
 
-Collaborators={(proposalID, researcherID) (foreign key from GrantProposal, foreign key from Researcher)}
+Collaborators={proposal_id(fkGrantproposals),researcher_id(fkResearchers),PRIMARY KEY (proposal_id, researcher_id),}
 
-Reviewer={reviewerID, firstName, lastName, emailAddress}
+Reviewers={_reviewer_id_,researcher_id(fkResearchers)}
 
-ConflictsOfInterest={(reviewerID, conflictedResearcherID) (foreign key from Reviewer, foreign key from Researcher)}
+ReviewerAssignments={_assignment_id_,proposal_id(fkGrantProposals),reviewer_id(fkReviewers),review_deadline,review_submitted}
 
-ReviewerAssignment={assignmentID, competitionID (foreign key from GrantCompetition), reviewerID (foreign key from Reviewer), deadline, reviewStatus}
+ConflictsOfInterest={_conflict_id_, reviewer_id(fkReviewers), researcher_id(fkResearchers)}
 
-GrantSelectionCommitteeMeeting={meetingID, date}
+CommitteeMeetings={_meeting_id_, meeting_date}
 
-MeetingDiscussions={(meetingID, proposalID) (foreign key from GrantSelectionCommitteeMeeting, foreign key from GrantProposal)}
-
-## problems with current tables work on schemas tomorrow 
+MeetingDiscussions={meeting_id(fkCommitteeMeetings), proposal_id(fkGrantProposals), PRIMARY KEY (meeting_id, proposal_id)}
