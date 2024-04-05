@@ -118,15 +118,4 @@ VALUES
     (5, 9),
     (5, 10);
 
-INSERT INTO Submitted (proposalID, competitionID)
-VALUES
-    (1, 1),  -- Proposal 1 submitted to Competition 1
-    (2, 1),  -- Proposal 2 submitted to Competition 1
-    (3, 2),  -- Proposal 3 submitted to Competition 2
-    (4, 2),  -- Proposal 4 submitted to Competition 2
-    (5, 3),  -- Proposal 5 submitted to Competition 3
-    (6, 3),  -- Proposal 6 submitted to Competition 3
-    (7, 4),  -- Proposal 7 submitted to Competition 4
-    (8, 4),  -- Proposal 8 submitted to Competition 4
-    (9, 5),  -- Proposal 9 submitted to Competition 5
-    (10, 5); -- Proposal 10 submitted to Competition 5
+
