@@ -90,3 +90,12 @@ CREATE TABLE MeetingDiscussions (
     FOREIGN KEY (meetingID) REFERENCES GrantSelectionCommitteeMeeting(meetingID),
     FOREIGN KEY (proposalID) REFERENCES GrantProposal(proposalID)
 );
+
+CREATE TABLE Submitted (
+    proposalID INTEGER,
+    competitionID INTEGER,
+    PRIMARY KEY (proposalID, competitionID),
+    FOREIGN KEY (proposalID) REFERENCES GrantProposal(proposalID),
+    FOREIGN KEY (competitionID) REFERENCES GrantCompetition(competitionID)
+);
+
