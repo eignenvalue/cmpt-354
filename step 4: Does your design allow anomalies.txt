@@ -4,7 +4,7 @@ researcher_id → {first_name, last_name, email_address, organization}
 
 GrantCompetitions Table:
 
-competition_id → {title, application_deadline, description, area, status}
+competition_id → {title, application_deadline,creationdate, description, area, status}
 GrantProposals Table:
 
 proposal_id → {requested_amount, competition_id, principal_investigator_id, status, awarded_amount, submission_date,competitionID}
