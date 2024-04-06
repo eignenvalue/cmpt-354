@@ -11,7 +11,7 @@ VALUES
     (9, 'Daniel', 'Garcia', 'daniel.garcia@example.com', 'University I'),
     (10, 'Olivia', 'Lopez', 'olivia.lopez@example.com', 'University J');
 
-INSERT INTO GrantCompetition (competitionID, title, applicationDeadline, shortDescription, area, status)
+INSERT INTO GrantCompetition (competitionID, title, applicationDeadline,creationdate, shortDescription, area, status)
 VALUES
     (1, 'Research Grant 2024', '2024-05-15', 'Funding for research projects in various fields', 'Science', 'open'),
     (2, 'Technology Innovation Grant', '2024-06-20', 'Supporting innovative technology projects', 'Technology', 'open'),
