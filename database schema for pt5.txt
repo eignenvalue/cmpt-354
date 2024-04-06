@@ -78,7 +78,7 @@ CREATE TABLE ReviewerAssignment (
     reviewerID INTEGER,
     deadline DATE,
     reviewStatus TEXT,
-    FOREIGN KEY (competitionID) REFERENCES GrantCompetition(competitionID),
+    FOREIGN KEY (proposalID) REFERENCES GrantProposal(proposalID),
     FOREIGN KEY (reviewerID) REFERENCES Reviewer(reviewerID)
 );
 
