@@ -2,7 +2,7 @@ schema outline:
 
 Researcher={_researcherID_, firstName, lastName, emailAddress, organization}
 
-GrantCompetition={_competitionID_, title, applicationDeadline, Description, area, status}
+GrantCompetition={_competitionID_, title, applicationDeadline,creationdate, Description, area, status}
 
 GrantProposals={_proposal_id_,requested_amount,competition_id(fkGrantCompetitions),principal_investigator_id(fkResearchers),status,awarded_amount,submission_date}
 
