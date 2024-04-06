@@ -11,18 +11,19 @@ VALUES
     (9, 'Daniel', 'Garcia', 'daniel.garcia@example.com', 'University I'),
     (10, 'Olivia', 'Lopez', 'olivia.lopez@example.com', 'University J');
 
-INSERT INTO GrantCompetition (competitionID, title, applicationDeadline,creationdate, shortDescription, area, status)
+INSERT INTO GrantCompetition (competitionID, title, applicationDeadline, creationDate, shortDescription, area, status)
 VALUES
-    (1, 'Research Grant 2024', '2024-05-15', 'Funding for research projects in various fields', 'Science', 'open'),
-    (2, 'Technology Innovation Grant', '2024-06-20', 'Supporting innovative technology projects', 'Technology', 'open'),
-    (3, 'Healthcare Improvement Grant', '2024-07-10', 'Funding for healthcare improvement initiatives', 'Healthcare', 'closed'),
-    (4, 'Education Enhancement Grant', '2024-08-25', 'Supporting education initiatives and programs', 'Education', 'open'),
-    (5, 'Environmental Sustainability Grant', '2024-09-30', 'Promoting projects aimed at environmental conservation', 'Environment', 'open'),
-    (6, 'Arts and Culture Grant', '2024-10-15', 'Supporting projects in arts and culture', 'Arts', 'open'),
-    (7, 'Community Development Grant', '2024-11-20', 'Funding for community development initiatives', 'Community', 'open'),
-    (8, 'Entrepreneurship Support Grant', '2024-12-10', 'Supporting entrepreneurship and startups', 'Business', 'closed'),
-    (9, 'Humanitarian Aid Grant', '2025-01-15', 'Providing aid to communities in need', 'Humanitarian', 'open'),
-    (10, 'Sports and Recreation Grant', '2025-02-20', 'Supporting sports and recreation programs', 'Sports', 'open');
+    (1, 'Research Grant 2024', '2024-05-15', '2024-01-01', 'Funding for research projects in various fields', 'Science', 'open'),
+    (2, 'Technology Innovation Grant', '2024-06-20', '2024-02-01', 'Supporting innovative technology projects', 'Technology', 'open'),
+    (3, 'Healthcare Improvement Grant', '2024-07-10', '2024-03-01', 'Funding for healthcare improvement initiatives', 'Healthcare', 'closed'),
+    (4, 'Education Enhancement Grant', '2024-08-25', '2024-04-01', 'Supporting education initiatives and programs', 'Education', 'open'),
+    (5, 'Environmental Sustainability Grant', '2024-09-30', '2024-05-01', 'Promoting projects aimed at environmental conservation', 'Environment', 'open'),
+    (6, 'Arts and Culture Grant', '2024-10-15', '2024-06-01', 'Supporting projects in arts and culture', 'Arts', 'open'),
+    (7, 'Community Development Grant', '2024-11-20', '2024-07-01', 'Funding for community development initiatives', 'Community', 'open'),
+    (8, 'Entrepreneurship Support Grant', '2024-12-10', '2024-08-01', 'Supporting entrepreneurship and startups', 'Business', 'closed'),
+    (9, 'Humanitarian Aid Grant', '2025-01-15', '2024-09-01', 'Providing aid to communities in need', 'Humanitarian', 'open'),
+    (10, 'Sports and Recreation Grant', '2025-02-20', '2024-10-01', 'Supporting sports and recreation programs', 'Sports', 'open');
+
     
 INSERT INTO GrantProposal (proposalID, requestedAmount, applicationStatus, principleInvestigator, competitionID)
 VALUES
