@@ -1,21 +1,7 @@
 import sys
 import subprocess
 
-def install(package):    
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "--upgrade","pip"])
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-
-install("console-menu")
-    
-from consolemenu import *
-from consolemenu.items import *
-
-
 import sqlite3
-conn = sqlite3.connect('grantdatabase.db')
-
-
-
 ##functions do not work currently except for exit 
 def find_open_competitions():
     pu = PromptUtils(Screen())
@@ -24,8 +10,6 @@ def find_open_competitions():
     
     pu.println("\nYou entered:", result.input_string, "\n")
     pu.enter_to_continue()
-    
-    
 
 
 def find_largest_amount(area):
@@ -36,49 +20,94 @@ def find_awarded_before_date(date):
     print(date)
 
 
-def calculate_discrepancy(area):
-    print(area)
+def calculate_discrepancy(cur):
+
+    area = input("Enter the area you would like the discrepancy for: ")
+
+    query = """
+    SELECT AVG(ABS(requestedAmount - rewardedAmount)) AS avg_discrepancy
+    FROM GrantProposal
+    JOIN GrantCompetition ON GrantCompetition.competitionID = GrantProposal.competitionID
+    WHERE GrantCompetition.area = ?
+    """
+    cur.execute(query,(area,))
+    result = cur.fetchone()
+    
+
+    if result[0] is not None:
+        print("The average requested /awaraded discrepnacy for the area " + area + " is :")
+        print(result[0])
+    else:
+        print("No data available for area " + area)
+
+def list_reviewers_not_in_conflict(cur):
+
+def find_proposals_for_reviewer(cur):
 
 
-def list_reviewers_not_in_conflict(proposal_id):
-    print(proposal_id)
+    first = input("Enter reviewer first name:").strip()
+    last = input("Enter reviewer last name:").strip()
+    query = """
+    SELECT GrantProposal.proposalID
+    FROM GrantProposal
+    JOIN ReviewerAssignment ON GrantProposal.proposalID = ReviewerAssignment.proposalID
+    JOIN Reviewer ON ReviewerAssignment.reviewerID = Reviewer.reviewerID
+    WHERE Reviewer.firstName = ? AND Reviewer.lastName = ?
+    """
+    cur.execute(query, (first, last))
+    proposals = cur.fetchall()
+    if proposals:
+        print("Proposals that "+ first + " " + last + " needs to review are: ")
+        for proposal in proposals:
+            print(proposal[0])
+    else:
+        print("There are no proposals under " + first + " " + last)
+        
 
-
-def find_proposals_for_reviewer(reviewer_name):
-    print(reviewer_name)
-
+        
+        
+    
 
 def install(package):    
     subprocess.check_call([sys.executable, "-m", "pip", "install", "--upgrade","pip"])
     subprocess.check_call([sys.executable, "-m", "pip", "install", package])
         
-        
 def main():
-    # Create the root menu
-    
-    menu = ConsoleMenu("Welcome to the grant database", "Please enter the option you would like to choose")
+    conn = sqlite3.connect('grantdatabase.db')
+    cur = conn.cursor()
+    6
+    while True:
+        print("Grant Database Management System")
+        print("1. Find open competitions with large proposals at a specific month")
+        print("2. find the proposal(s) that request(s) the largest amount of money for a specified area")
+        print("3. find the proposal(s) that")
+        print("4. Enter area to find discrepnacy.")
+        print("5. Test")
+        print("6. Find proposoal under entered name")
+        print("7. exit")
+        choice = input("Enter your choice: ")
+        
+        if choice == '1':
+            find_open_competitions(cur)
+        elif choice == '2':
+            find_largest_amount(cur)
+        elif choice == '3':
+            find_awarded_before_date(cur)
+        elif choice == '4':
+            calculate_discrepancy(cur)
+        elif choice == '5':
+            list_reviewers_not_in_conflict(cur)
+        elif choice == '6':
+            find_proposals_for_reviewer(cur)
+        elif choice == '7':
+            print("Exiting the program.")
+            break    
+        else:
+            print("Invalid choice, please try again.")
 
-    find_open_competitionsitem =FunctionItem("Find open competitions with large proposals at a specific month",find_open_competitions)
-    find_largest_amountitem= FunctionItem("Find proposal with the largest amount of money requested in a specific area",find_largest_amount)
-    find_awarded_before_dateitem = FunctionItem("Find awarded proposal with the largest amount of money submitted before a specific date",find_awarded_before_date)
-    calculate_discrepancyitem = FunctionItem("Calculate average requested/awarded discrepancy for a specific area",calculate_discrepancy)
-    list_reviewers_not_in_conflictitem = FunctionItem("List reviewers not in conflict for a proposal",list_reviewers_not_in_conflict)
-    find_proposals_for_revieweritem =FunctionItem("Find proposals to review for a specific reviewer",find_proposals_for_reviewer)
-    
-    #create menu items
-    menu.append_item(find_open_competitionsitem)
-    menu.append_item(find_largest_amountitem)
-    menu.append_item(find_awarded_before_dateitem)
-    menu.append_item(calculate_discrepancyitem)
-    menu.append_item(list_reviewers_not_in_conflictitem)
-    menu.append_item(find_proposals_for_revieweritem)
-    
-    # Show the menu
-    menu.start()
-    menu.join()
 
+    if conn:
+        conn.close()
 
-    
-    
 main()
-    
+   
