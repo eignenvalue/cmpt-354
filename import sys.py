@@ -1,7 +1,15 @@
 import sys
+import subprocess
+
+def install(package):    
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "--upgrade","pip"])
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+install("console-menu")
+    
 from consolemenu import *
 from consolemenu.items import *
-import subprocess
+
 
 import sqlite3
 conn = sqlite3.connect('grantdatabase.db')
@@ -18,6 +26,7 @@ def find_open_competitions():
     pu.enter_to_continue()
     
     
+
 
 def find_largest_amount(area):
     print(area)
@@ -46,6 +55,7 @@ def install(package):
         
 def main():
     # Create the root menu
+    
     menu = ConsoleMenu("Welcome to the grant database", "Please enter the option you would like to choose")
 
     find_open_competitionsitem =FunctionItem("Find open competitions with large proposals at a specific month",find_open_competitions)
@@ -67,7 +77,8 @@ def main():
     menu.start()
     menu.join()
 
-if __name__ == "__main__":
-    install("console-menu")
-    main()
+
+    
+    
+main()
     
