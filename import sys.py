@@ -19,7 +19,6 @@ def find_open_competitions():
     
     
 
-
 def find_largest_amount(area):
     print(area)
 
