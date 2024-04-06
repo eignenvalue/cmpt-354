@@ -41,6 +41,7 @@ CREATE TABLE GrantCompetition (
 CREATE TABLE GrantProposal (
     proposalID INTEGER PRIMARY KEY,
     requestedAmount REAL NOT NULL,
+    rewardedAmount Real NOT NULL,
     applicationStatus TEXT NOT NULL,
     principleInvestigator INTEGER,
     competitionID INTEGER,
