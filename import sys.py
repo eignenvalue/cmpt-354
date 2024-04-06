@@ -3,12 +3,16 @@ from consolemenu import *
 from consolemenu.items import *
 import subprocess
 
+import sqlite3
+conn = sqlite3.connect('grantdatabase.db')
+
+
 
 ##functions do not work currently except for exit 
 def find_open_competitions():
     pu = PromptUtils(Screen())
     # PromptUtils.input() returns an InputResult
-    result = pu.input("Enter an input")
+    result = pu.input("enter the month you would like to find competitions for")
     
     pu.println("\nYou entered:", result.input_string, "\n")
     pu.enter_to_continue()
