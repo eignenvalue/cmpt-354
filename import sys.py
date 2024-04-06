@@ -41,6 +41,45 @@ def calculate_discrepancy(cur):
         print("No data available for area " + area)
 
 def list_reviewers_not_in_conflict(cur):
+    id = int(input("Enter proposal ID: "))
+     # Query to select reviewers who are not in conflict with the proposal and have not reached the maximum of three proposals to review
+    query = """
+    SELECT R.reviewerID, R.firstName, R.lastName
+    FROM Reviewer R
+    LEFT JOIN ConflictsOfInterest C ON R.reviewerID = C.reviewerID
+    LEFT JOIN (
+        SELECT reviewerID, COUNT(*) AS assigned_proposals
+        FROM ReviewerAssignment
+        GROUP BY reviewerID
+    ) AS A ON R.reviewerID = A.reviewerID
+    WHERE (NOT EXISTS (
+                SELECT 1
+                FROM ConflictsOfInterest
+                WHERE conflictedResearcherID = ? AND reviewerID = R.reviewerID
+            )
+        OR (A.assigned_proposals IS NULL OR A.assigned_proposals < 3))
+    """
+    
+    cur.execute(query, (id, ))
+    eligible_reviewers = cur.fetchall()
+
+    if eligible_reviewers:
+        print("Eligible Reviewers:")
+        for reviewer in eligible_reviewers:
+            print(f"{reviewer[0]} - {reviewer[1]} {reviewer[2]}")
+        
+        reviewer_ids = input("Enter reviewer IDs (comma-separated) to assign to the proposal: ").split(',')
+        reviewer_ids = [int(reviewer_id.strip()) for reviewer_id in reviewer_ids]
+
+        # Assign reviewers to review the proposal
+        for reviewer_id in reviewer_ids:
+            query = "INSERT INTO ReviewerAssignment (proposalID, reviewerID) VALUES (?, ?)"
+            cur.execute(query, (id, reviewer_id))
+        print("Reviewers assigned successfully.")
+    else:
+        print("No eligible reviewers found for the specified proposal.")
+
+        
 
 def find_proposals_for_reviewer(cur):
 
