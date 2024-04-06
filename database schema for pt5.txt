@@ -74,7 +74,7 @@ CREATE TABLE ConflictsOfInterest (
 
 CREATE TABLE ReviewerAssignment (
     assignmentID INTEGER PRIMARY KEY,
-    competitionID INTEGER,
+    proposalID INTEGER,
     reviewerID INTEGER,
     deadline DATE,
     reviewStatus TEXT,
