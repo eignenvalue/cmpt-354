@@ -80,7 +80,7 @@ VALUES
     (9, 2), (9, 4), (9, 7), (9, 9),
     (10, 1), (10, 3), (10, 6), (10, 10);
 
-INSERT INTO ReviewerAssignment (assignmentID, competitionID, reviewerID, deadline, reviewStatus)
+INSERT INTO ReviewerAssignment (assignmentID, proposalID, reviewerID, deadline, reviewStatus)
 VALUES
     (1, 1, 1, '2024-05-01', 'pending'),
     (2, 1, 2, '2024-04-25', 'pending'),
