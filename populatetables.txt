@@ -24,18 +24,18 @@ VALUES
     (9, 'Humanitarian Aid Grant', '2025-01-15', 'Providing aid to communities in need', 'Humanitarian', 'open'),
     (10, 'Sports and Recreation Grant', '2025-02-20', 'Supporting sports and recreation programs', 'Sports', 'open');
     
-INSERT INTO GrantProposal (proposalID, requestedAmount, applicationStatus, principleInvestigator)
+INSERT INTO GrantProposal (proposalID, requestedAmount, applicationStatus, principleInvestigator, competitionID)
 VALUES
-    (1, 25000.00, 'submitted', 1),
-    (2, 18000.00, 'awarded', 2),
-    (3, 30000.00, 'not awarded', 3),
-    (4, 15000.00, 'submitted', 4),
-    (5, 22000.00, 'submitted', 5),
-    (6, 28000.00, 'awarded', 6),
-    (7, 20000.00, 'not awarded', 7),
-    (8, 35000.00, 'submitted', 8),
-    (9, 19000.00, 'awarded', 9),
-    (10, 26000.00, 'not awarded', 10);
+    (1, 25000, 'submitted', 1, 1),    -- Proposal 1 (Competition 1)
+    (2, 18000, 'awarded', 2, 2),      -- Proposal 2 (Competition 2)
+    (3, 30000, 'not awarded', 3, 3),  -- Proposal 3 (Competition 3)
+    (4, 15000, 'submitted', 4, 4),    -- Proposal 4 (Competition 4)
+    (5, 22000, 'submitted', 5, 5),    -- Proposal 5 (Competition 5)
+    (6, 28000, 'awarded', 6, 6),      -- Proposal 6 (New Competition 6)
+    (7, 20000, 'not awarded', 7, 1),  -- Proposal 7 (Competition 1)
+    (8, 35000, 'submitted', 8, 2),    -- Proposal 8 (Competition 2)
+    (9, 19000, 'awarded', 9, 3),      -- Proposal 9 (Competition 3)
+    (10, 26000, 'not awarded', 10, 4);-- Proposal 10 (Competition 4)
     
 
 INSERT INTO Collaborators (proposalID, researcherID)
