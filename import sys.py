@@ -7,7 +7,7 @@ import sqlite3
 ##functions do not work currently except for exit 
 def find_open_competitions(cur):
     
-    # PromptUtils.input() returns an InputResult
+    
     userspecmonth = input("Enter the user-specified month (MM): ").strip()
 
         
