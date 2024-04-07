@@ -197,7 +197,7 @@ def main():
         print(
             "2. find the proposal(s) that request(s) the largest amount of money for a specified area"
         )
-        print("3. find the proposals submitted before that date that are awarded the largest amount of money
+        print("3. find the proposals submitted before that date that are awarded the largest amount of money")
         print("4. Enter area to find discrepnacy.")
         print("5. Reviewer assignment")
         print("6. Find proposoal under entered name")
