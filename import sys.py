@@ -188,7 +188,7 @@ def find_proposals_for_reviewer(cur):
 
 
 def main():
-    conn = sqlite3.connect("grantdatabase.db")
+    conn = sqlite3.connect("council.db")
     cur = conn.cursor()
 
     while True:
